@@ -2,6 +2,7 @@ from room import Room
 from player import Player
 from item import Item
 import os
+from gold import Gold
 
 
 # Declare all the rooms
@@ -23,6 +24,14 @@ to north. The smell of gold permeates the air."""),
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
+
+'Room1': Room("Room 1", """You've found the long-lost room 1! Sadly, it has already been completely emptied by
+earlier adventurers. The only exit is to the south."""),
+
+'Room2': Room("Room 2", """You've found the long-lost room 2! Sadly, it has already been completely emptied by
+earlier adventurers. The only exit is to the south."""),
+
+
 }
 
 #Items
@@ -40,6 +49,10 @@ room['narrow'].items = [poison_apple]
 room['outside'].items = [health_pot]
 
 
+#random bits of gold
+
+
+
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -50,6 +63,10 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+room['treasure'].e_to = room['Room1']
+room['Room1'].w_to = room ['treasure']
+room['Room1'].e_to = room ['Room2']
+room['Room2'].w_to = room ['Room1']
 
 #
 # Main
